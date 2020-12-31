@@ -1,0 +1,24 @@
+name: model17
+description: lambdarank 599 -> 512 -> 128 -> 32 -> 1 + dropout 0.5
+submit: submit_17.csv
+generator:
+    min_length: 1
+    drop_all_zeros: True
+data:
+    test_size: 500
+build:
+    optimizer: adam
+    input_dim: 519
+    layer_dims:
+        - 512
+        - 128
+        - 32
+    loss_function: lambdarank
+    epochs: 100
+    dropout: 0.5
+# callback:
+    # patience: 30
+    # monitor: val_basic_metric
+metric:
+    max_T: 5
+# 
